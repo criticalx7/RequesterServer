@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.Font?>
+<VBox prefHeight="389.0" prefWidth="479.0" spacing="10.0" style="-fx-background-color: #d0d0d0;"
+      xmlns="http://javafx.com/javafx/8.0.121" xmlns:fx="http://javafx.com/fxml/1"
+      fx:controller="client.ui.JobListController">
+    <VBox spacing="10.0">
+        <AnchorPane prefHeight="47.0" prefWidth="475.0" style="-fx-background-color: silver;">
+            <Label prefHeight="47.0" prefWidth="267.0" text="JOB REVIEW" textFill="#fffafa">
+                <font>
+                    <Font size="32.0"/>
+                </font>
+                <padding>
+                    <Insets left="20.0"/>
+                </padding>
+            </Label>
+        </AnchorPane>
+        <HBox spacing="10.0">
+            <VBox.margin>
+                <Insets left="20.0"/>
+            </VBox.margin>
+            <Label text="User Type">
+                <font>
+                    <Font name="System Bold" size="14.0"/>
+                </font>
+            </Label>
+            <HBox spacing="10.0">
+                <HBox.margin>
+                    <Insets left="15.0"/>
+                </HBox.margin>
+                <RadioButton fx:id="managerToggle" mnemonicParsing="false" onAction="#onSelectUserType" selected="true"
+                             text="Manager">
+                    <toggleGroup>
+                        <ToggleGroup fx:id="userTypeGroup"/>
+                    </toggleGroup>
+                </RadioButton>
+                <RadioButton fx:id="reviewerToggle" mnemonicParsing="false" onAction="#onSelectUserType" text="Reviewer"
+                             toggleGroup="$userTypeGroup"/>
+            </HBox>
+        </HBox>
+        <FlowPane fx:id="formBox" alignment="CENTER_LEFT" hgap="20.0" prefHeight="50.0" prefWidth="600.0">
+            <VBox.margin>
+                <Insets left="20.0"/>
+            </VBox.margin>
+            <Label text="ID">
+                <font>
+                    <Font name="System Bold" size="14.0"/>
+                </font>
+            </Label>
+            <TextField fx:id="idField" prefHeight="25.0" prefWidth="44.0" text="1"/>
+            <Label text="Name">
+                <font>
+                    <Font size="14.0"/>
+                </font>
+            </Label>
+            <TextField fx:id="nameField" text="Test"/>
+            <Button fx:id="addBtn" defaultButton="true" mnemonicParsing="false" onAction="#onAdd" text="ADD">
+                <FlowPane.margin>
+                    <Insets left="10.0"/>
+                </FlowPane.margin>
+            </Button>
+            <Button fx:id="deleteBtn" mnemonicParsing="false" onAction="#onDelete" text="DEL"/>
+        </FlowPane>
+    </VBox>
+    <TabPane fx:id="tabPane" prefHeight="200.0" prefWidth="200.0" tabClosingPolicy="UNAVAILABLE">
+        <VBox.margin>
+            <Insets/>
+        </VBox.margin>
+        <padding>
+            <Insets left="10.0" right="10.0"/>
+        </padding>
+        <Tab fx:id="activeTab" text="ACTIVE">
+            <AnchorPane prefHeight="200.0" prefWidth="200.0">
+                <ListView fx:id="activeList" prefHeight="136.0" prefWidth="459.0"/>
+            </AnchorPane>
+        </Tab>
+        <Tab fx:id="inActiveTab" text="INACTIVE">
+            <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                <ListView fx:id="inActiveList" prefHeight="134.0" prefWidth="459.0"/>
+            </AnchorPane>
+        </Tab>
+    </TabPane>
+    <HBox alignment="CENTER_RIGHT">
+        <padding>
+            <Insets right="20.0"/>
+        </padding>
+        <Button fx:id="refreshBtn" mnemonicParsing="false" onAction="#onRefresh" text="Refresh">
+            <HBox.margin>
+                <Insets/>
+            </HBox.margin>
+        </Button>
+    </HBox>
+    <HBox fx:id="buttonBox" alignment="CENTER" prefHeight="100.0" prefWidth="479.0" spacing="20.0">
+        <Button fx:id="requestBtn" mnemonicParsing="false" onAction="#onSend" prefHeight="20.0" prefWidth="80.0"
+                text="Send"/>
+        <Button fx:id="acceptBtn" mnemonicParsing="false" onAction="#onAccept" prefHeight="20.0" prefWidth="80.0"
+                text="Accept"/>
+        <Button fx:id="rejectBtn" mnemonicParsing="false" onAction="#onReject" prefHeight="20.0" prefWidth="80.0"
+                text="Reject"/>
+    </HBox>
+</VBox>
